@@ -33,13 +33,13 @@ In this practice, you will:
 
 ### Install MySQL on CentOS
 
-Follow this guide to install MySQL on your CentOS server:  
-[CentOS 8 MySQL Installation Guide](https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14417929/CentOS+8)
+Follow this guide to install MySQL on your CentOS Database server:  
+https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14417929/CentOS+8
 
 ### Login and Configure MySQL
 
 Follow this guide for MySQL configuration and commands:  
-[MySQL Commands Practice](https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14319683/Commands+Practice)
+https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14319683/Commands+Practice
 
 ### Inside MySQL, run the following:
 
