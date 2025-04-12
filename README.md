@@ -105,7 +105,7 @@ DB_USERNAME=itgenius_app_user
 DB_PASSWORD=Databaseuserstrongpassword@123
 ```
 
-Save and exit (`CTRL+O`, `Enter`, then `CTRL+X` if using nano).
+Save and exit.
 
 ---
 
@@ -117,7 +117,7 @@ Save and exit (`CTRL+O`, `Enter`, then `CTRL+X` if using nano).
 java -jar itgenius-0.0.1-SNAPSHOT.jar
 ```
 
-### ✅ To Run in Background and Redirect Logs
+### ✅ Alternatively To Run in Background and Redirect Logs
 
 ```bash
 nohup java -jar itgenius-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
