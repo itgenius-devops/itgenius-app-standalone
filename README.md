@@ -1,3 +1,5 @@
+
+
 ---
 
 ```markdown
@@ -154,7 +156,7 @@ You should see the application home page ready for user registration and login.
 
 ---
 
-**NOTE: IF USING LIGHTSAIL SERVER, MAKE SURE TO ALLOW PORT 8085 ON THE APPLICATION SERVER AND PORT 3306 ON THE MYSQL DATABASE SERVER.**
+
 
 ---
 
@@ -163,3 +165,4 @@ Feel free to explore, test, and break things — that’s how real DevOps is lea
 ```
 
 ---
+**NOTE: IF USING LIGHTSAIL SERVER, MAKE SURE TO ALLOW PORT 8085 ON THE APPLICATION SERVER AND PORT 3306 ON THE MYSQL DATABASE SERVER.**
