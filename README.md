@@ -33,7 +33,7 @@ In this practice, you will:
 
 ### Install MySQL on CentOS
 
-Follow this guide to install MySQL on your CentOS Database server:  
+Follow this guide to install MySQL on your CentOS database server:  
 https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14417929/CentOS+8
 
 ### Login and Configure MySQL
@@ -51,21 +51,15 @@ CREATE DATABASE itgenius_app_database;
 
 #### Step 2: Create a New User
 
-```sql
-CREATE USER 'itgenius_app_user'@'%' IDENTIFIED BY 'Databaseuserstrongpassword@123';
-```
+Run the command to create a new user named `itgenius_app_user` with the password `Databaseuserstrongpassword@123` and allow access from all hosts (`%`).
 
 #### Step 3: Grant Privileges
 
-```sql
-GRANT ALL PRIVILEGES ON itgenius_app_database.* TO 'itgenius_app_user'@'%';
-```
+Grant all privileges on the `itgenius_app_database` to the user `itgenius_app_user`.
 
 #### Step 4: Flush Privileges
 
-```sql
-FLUSH PRIVILEGES;
-```
+Run the `FLUSH PRIVILEGES;` command to apply changes.
 
 **Make sure to record the following credentials:**
 
@@ -79,11 +73,15 @@ FLUSH PRIVILEGES;
 
 ### Step 1: Install Java 17
 
+Run the following command to install Java 17:
+
 ```bash
 sudo yum install java-17-openjdk-1:17.0.13.0.11-4.el9.x86_64 -y
 ```
 
 ### Step 2: Clone the Application Repository
+
+Use the following commands to clone and enter the application directory:
 
 ```bash
 git clone https://github.com/itgenius-devops/itgenius-app-standalone.git
@@ -101,9 +99,9 @@ Edit the `.env` file:
 nano .env
 ```
 
-Update the file as follows:
+Update the file with the database configuration:
 
-```env
+```
 DB_URL=jdbc:mysql://<your-database-server-public-ip>:3306/itgenius_app_database
 DB_USERNAME=itgenius_app_user
 DB_PASSWORD=Databaseuserstrongpassword@123
@@ -116,6 +114,8 @@ Save and exit the file.
 ## Running the Application
 
 ### Run in the Foreground
+
+Use the following command:
 
 ```bash
 java -jar itgenius-0.0.1-SNAPSHOT.jar
@@ -137,7 +137,7 @@ ps -ef | grep java
 
 ## Accessing the Application
 
-Open your browser and navigate to:
+Open your browser and visit:
 
 ```
 http://<your-app-server-public-ip>:8085
@@ -161,8 +161,5 @@ You should see the application running and ready for user registration and login
 ---
 
 
-
----
 ```
-
 **NOTE: IF USING LIGHTSAIL SERVER, MAKE SURE TO ALLOW PORT 8085 ON THE APPLICATION SERVER AND PORT 3306 ON THE MYSQL DATABASE SERVER.**
