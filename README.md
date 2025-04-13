@@ -1,4 +1,4 @@
-# ITGenius App - Java Spring Boot + MySQL Deployment Practice
+# ITGenius App - Java Spring Boot + MySQL Database
 
 This hands-on project walks you through deploying a Java Spring Boot application connected to a MySQL database using two CentOS servers.
 
