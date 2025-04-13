@@ -136,6 +136,13 @@ Save and close the file.
 
 ---
 
+> ⚠️ **Important**:  
+If you are using Amazon Lightsail, go into the lightsail console in AWS and under the "Connectivity" tab, make sure to  :
+- Open **port 8085** on the **Application Server** (for web access)
+- Open **port 3306** on the **Database Server** (for MySQL connectivity)
+
+---
+
 ## ▶️ **Running the Application**
 
 ### Run in Foreground
@@ -181,13 +188,6 @@ You should see the application interface, allowing user registration and login.
 | **Database Name** | `itgenius_app_database`                          |
 | **Username**      | `itgenius_app_user`                              |
 | **Password**      | `Databaseuserstrongpassword@123`                |
-
----
-
-> ⚠️ **Important**:  
-If you are using Amazon Lightsail, make sure to:
-- Open **port 8085** on the **Application Server** (for web access)
-- Open **port 3306** on the **Database Server** (for MySQL connectivity)
 
 ---
 
