@@ -137,7 +137,7 @@ Save and close the file.
 ---
 
 > ⚠️ **Important**:  
-If you are using Amazon Lightsail, go into the lightsail console in AWS and under the "Connectivity" tab, make sure to  :
+If you are using Amazon Lightsail, go into the lightsail console in AWS and under the "Networking" tab, make sure to  :
 - Open **port 8085** on the **Application Server** (for web access)
 - Open **port 3306** on the **Database Server** (for MySQL connectivity)
 
