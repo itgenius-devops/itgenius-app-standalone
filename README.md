@@ -106,7 +106,7 @@ sudo yum install https://dev.mysql.com/get/mysql80-community-release-el7-1.noarc
 #### b. Install MySQL Client
 
 ```bash
-sudo yum install mysql-community-client -y
+sudo yum install mysql -y
 ```
 
 ### Step 3: Clone the Application Repository
