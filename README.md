@@ -1,8 +1,3 @@
-
-
----
-
-```markdown
 # ITGenius App - Java Spring Boot + MySQL Deployment Practice
 
 This hands-on project walks you through deploying a Java Spring Boot application connected to a MySQL database using two CentOS servers.
@@ -53,13 +48,29 @@ CREATE DATABASE itgenius_app_database;
 
 Run the command to create a new user named `itgenius_app_user` with the password `Databaseuserstrongpassword@123` and allow access from all hosts (`%`).
 
+```sql
+CREATE USER 'itgenius_app_user'@'%' IDENTIFIED BY 'Databaseuserstrongpassword@123';
+```
+
 #### Step 3: Grant Privileges
 
 Grant all privileges on the `itgenius_app_database` to the user `itgenius_app_user`.
 
+```sql
+GRANT ALL PRIVILEGES ON itgenius_app_database.* TO 'itgenius_app_user'@'%';
+```
+
+> Optionally, you can use limited privileges:
+
+```sql
+GRANT CREATE, ALTER, DROP, SELECT, INSERT, UPDATE, DELETE ON itgenius_app_database.* TO 'itgenius_app_user'@'%';
+```
+
 #### Step 4: Flush Privileges
 
-Run the `FLUSH PRIVILEGES;` command to apply changes.
+```sql
+FLUSH PRIVILEGES;
+```
 
 **Make sure to record the following credentials:**
 
@@ -85,9 +96,6 @@ Use the following commands to clone and enter the application directory:
 
 ```bash
 git clone https://github.com/itgenius-devops/itgenius-app-standalone.git
-```
-
-```bash
 cd itgenius-app-standalone
 ```
 
@@ -114,8 +122,6 @@ Save and exit the file.
 ## Running the Application
 
 ### Run in the Foreground
-
-Use the following command:
 
 ```bash
 java -jar itgenius-0.0.1-SNAPSHOT.jar
@@ -160,6 +166,5 @@ You should see the application running and ready for user registration and login
 
 ---
 
-
-```
 **NOTE: IF USING LIGHTSAIL SERVER, MAKE SURE TO ALLOW PORT 8085 ON THE APPLICATION SERVER AND PORT 3306 ON THE MYSQL DATABASE SERVER.**
+
