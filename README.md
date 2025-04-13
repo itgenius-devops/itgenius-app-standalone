@@ -104,7 +104,7 @@ cd itgenius-app-standalone
 Edit the `.env` file:
 
 ```bash
-nano .env
+vi .env
 ```
 
 Update the file with the database configuration:
