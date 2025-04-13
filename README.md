@@ -1,113 +1,130 @@
-# ITGenius App - Java Spring Boot + MySQL Database
 
-This hands-on project walks you through deploying a Java Spring Boot application connected to a MySQL database using two CentOS servers.
 
 ---
 
-## Project Overview
+# **ITGenius App Deployment Guide**  
+**Technology Stack: Java Spring Boot + MySQL**  
+*Environment: Two CentOS Servers*
 
-In this practice, you will:
-
-- Set up a dedicated MySQL database server
-- Configure a Spring Boot application server
-- Enable user registration and login functionality
-- Learn how to use environment-based configuration to link your application with a database
+This hands-on project provides a practical walkthrough for deploying a Java Spring Boot application connected to a MySQL database using two separate CentOS-based servers.
 
 ---
 
-## Infrastructure Setup
+## 🔍 **Project Overview**
 
-### Step 1: Provision Two Servers
+In this exercise, you will:
 
-- **Server 1**: Database Server (CentOS, minimum 1 GB RAM)
-- **Server 2**: Application Server (CentOS)
+- Provision a dedicated MySQL database server
+- Set up a Spring Boot application server
+- Implement user registration and login functionality
+- Utilize environment-based configurations to connect your application to the database
 
 ---
 
-## Database Server Setup (Server 1)
+## 🛠️ **Infrastructure Setup**
 
-### Install MySQL on CentOS
+### Step 1: Provision Two CentOS Servers
+
+- **Server 1**: MySQL Database Server  
+  - OS: CentOS  
+  - Minimum: 1 GB RAM  
+- **Server 2**: Application Server  
+  - OS: CentOS  
+
+---
+
+## 🗄️ **Database Server Configuration (Server 1)**
+
+### 1. Install MySQL
 
 Follow this guide to install MySQL on your CentOS database server:  
-https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14417929/CentOS+8
+🔗 [CentOS 8 MySQL Installation Guide](https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14417929/CentOS+8)
 
-### Login and Configure MySQL
+### 2. Log in and Configure MySQL
 
-Follow this guide for MySQL configuration and commands:  
-https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14319683/Commands+Practice
+Refer to the following guide for MySQL commands and best practices:  
+🔗 [MySQL Command Guide](https://itgenius-team-u5ijt9rh.atlassian.net/wiki/spaces/documentat/pages/14319683/Commands+Practice)
 
-### Inside MySQL, run the following:
+Once inside the MySQL shell, execute the following:
 
-#### Step 1: Create a New Database
+#### a. Create a New Database
 
 ```sql
 CREATE DATABASE itgenius_app_database;
 ```
 
-#### Step 2: Create a New User
-
-Run the command to create a new user named `itgenius_app_user` with the password `Databaseuserstrongpassword@123` and allow access from all hosts (`%`).
+#### b. Create a Database User
 
 ```sql
 CREATE USER 'itgenius_app_user'@'%' IDENTIFIED BY 'Databaseuserstrongpassword@123';
 ```
 
-#### Step 3: Grant Privileges
-
-Grant all privileges on the `itgenius_app_database` to the user `itgenius_app_user`.
+#### c. Grant User Privileges
 
 ```sql
 GRANT ALL PRIVILEGES ON itgenius_app_database.* TO 'itgenius_app_user'@'%';
 ```
 
-> Optionally, you can use limited privileges:
+> Optional: For limited privileges, use:
 
 ```sql
 GRANT CREATE, ALTER, DROP, SELECT, INSERT, UPDATE, DELETE ON itgenius_app_database.* TO 'itgenius_app_user'@'%';
 ```
 
-#### Step 4: Flush Privileges
+#### d. Flush Privileges
 
 ```sql
 FLUSH PRIVILEGES;
 ```
 
-**Make sure to record the following credentials:**
+📌 **Credentials to Note:**
 
-- Database Name: `itgenius_app_database`
-- Username: `itgenius_app_user`
-- Password: `Databaseuserstrongpassword@123`
+- **Database Name**: `itgenius_app_database`
+- **Username**: `itgenius_app_user`
+- **Password**: `Databaseuserstrongpassword@123`
 
 ---
 
-## Application Server Setup (Server 2)
+## 🚀 **Application Server Configuration (Server 2)**
 
 ### Step 1: Install Java 17
-
-Run the following command to install Java 17:
 
 ```bash
 sudo yum install java-17-openjdk-1:17.0.13.0.11-4.el9.x86_64 -y
 ```
 
-### Step 2: Clone the Application Repository
+### Step 2: Install MySQL Client (Not Server)
 
-Use the following commands to clone and enter the application directory:
+MySQL Client allows the app server to communicate with the MySQL database remotely.
+
+#### a. Add the MySQL Yum Repository
+
+```bash
+sudo yum install https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm -y
+```
+
+#### b. Install MySQL Client
+
+```bash
+sudo yum install mysql-community-client -y
+```
+
+### Step 3: Clone the Application Repository
 
 ```bash
 git clone https://github.com/itgenius-devops/itgenius-app-standalone.git
 cd itgenius-app-standalone
 ```
 
-### Step 3: Configure Environment Variables
+### Step 4: Configure Environment Variables
 
-Edit the `.env` file:
+Open the `.env` file for editing:
 
 ```bash
 vi .env
 ```
 
-Update the file with the database configuration:
+Update the following variables with your database server details:
 
 ```
 DB_URL=jdbc:mysql://<your-database-server-public-ip>:3306/itgenius_app_database
@@ -115,25 +132,25 @@ DB_USERNAME=itgenius_app_user
 DB_PASSWORD=Databaseuserstrongpassword@123
 ```
 
-Save and exit the file.
+Save and close the file.
 
 ---
 
-## Running the Application
+## ▶️ **Running the Application**
 
-### Run in the Foreground
+### Run in Foreground
 
 ```bash
 java -jar itgenius-0.0.1-SNAPSHOT.jar
 ```
 
-### Run in the Background and Redirect Logs
+### Run in Background with Logs
 
 ```bash
 nohup java -jar itgenius-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 ```
 
-### Check if the Application is Running
+### Verify Application is Running
 
 ```bash
 ps -ef | grep java
@@ -141,7 +158,7 @@ ps -ef | grep java
 
 ---
 
-## Accessing the Application
+## 🌐 **Accessing the Application**
 
 Open your browser and visit:
 
@@ -149,22 +166,29 @@ Open your browser and visit:
 http://<your-app-server-public-ip>:8085
 ```
 
-You should see the application running and ready for user registration and login.
+You should see the application interface, allowing user registration and login.
 
 ---
 
-## Summary
+## 📋 **Summary Table**
 
-| Component       | Detail                                        |
-|-----------------|-----------------------------------------------|
-| DB Server       | Hosts MySQL and `itgenius_app_database`       |
-| App Server      | Hosts the Spring Boot application             |
-| Port            | Application runs on port `8085`               |
-| Java Version    | 17                                            |
-| Database        | `itgenius_app_database`                       |
-| Credentials     | `itgenius_app_user` / `Databaseuserstrongpassword@123` |
+| Component        | Description                                      |
+|------------------|--------------------------------------------------|
+| **Database Server** | Hosts MySQL and `itgenius_app_database`         |
+| **Application Server** | Hosts the Java Spring Boot Application        |
+| **App Port**      | `8085`                                           |
+| **Java Version**  | Java 17                                          |
+| **Database Name** | `itgenius_app_database`                          |
+| **Username**      | `itgenius_app_user`                              |
+| **Password**      | `Databaseuserstrongpassword@123`                |
 
 ---
 
-**NOTE: IF USING LIGHTSAIL SERVER, MAKE SURE TO ALLOW PORT 8085 ON THE APPLICATION SERVER AND PORT 3306 ON THE MYSQL DATABASE SERVER.**
+> ⚠️ **Important**:  
+If you are using Amazon Lightsail, make sure to:
+- Open **port 8085** on the **Application Server** (for web access)
+- Open **port 3306** on the **Database Server** (for MySQL connectivity)
 
+---
+
+Thank You
