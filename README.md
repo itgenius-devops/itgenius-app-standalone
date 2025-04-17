@@ -154,7 +154,7 @@ java -jar itgenius-0.0.1-SNAPSHOT.jar
 ### Run in Background with Logs
 
 ```bash
-nohup java -jar itgenius-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+nohup java -jar itgenius-0.0.1-SNAPSHOT.jar >> /var/log/app.log 2>&1 &
 ```
 
 ### Verify Application is Running
